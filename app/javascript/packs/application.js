@@ -11,8 +11,3 @@ import "bootstrap";
 
 
 
-function replaceCocktails (innerHTML) {
-  const cocktails = document.getElementById('cocktails');
-  cocktails.innerHTML = innerHTML;
-}
-replaceCocktails("<%= j render 'cocktail', cocktails: @cocktails %>");
