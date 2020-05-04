@@ -6,6 +6,14 @@ class CocktailsController < ApplicationController
     if params[:query].present?
       @search = "#{params[:query][:search]} #{params[:query][:filter]}"
       @cocktails = Cocktail.search_by_name(@search)
+      # respond_to do |format|
+      #   format.html
+      #   format.json { render json: { restaurants: @restaurants } }
+      # end
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       @cocktails = Cocktail.all
     end
