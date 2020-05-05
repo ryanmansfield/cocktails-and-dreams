@@ -1,4 +1,5 @@
 import "bootstrap";
+import AOS from 'aos';
 
   var checkBoxes = document.querySelectorAll(".form-check-input");
   var form = document.querySelector('form');
@@ -11,3 +12,6 @@ import "bootstrap";
 
 
 
+$ (function () {
+  AOS.init ();
+});

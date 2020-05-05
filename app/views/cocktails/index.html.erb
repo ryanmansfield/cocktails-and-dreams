@@ -1,13 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1525268323446-0505b6fe7778?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80);">
   <div class="container">
     <h1>Cocktails and Dreams</h1>
+
+    <%= simple_form_for :query, url: cocktails_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :search, input_html: {value: ""}, label: false %>
+
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "Add Cocktail", new_cocktail_path, class: "btn btn-primary" %>
   </div>
 </div>
-<%= simple_form_for :query, url: cocktails_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-  <%= f.input :search, input_html: {value: ""} %>
-
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
 
 
 
@@ -15,9 +17,8 @@
 
 
 </div>
-<p><%= link_to "Add Cocktail", new_cocktail_path, class: "btn btn-primary" %></p>
 
-<div id="cocktails">
+<div id="cocktails" class='cocktails'>
   <%= render 'cocktail', cocktails: @cocktails %>
 
 </div>
