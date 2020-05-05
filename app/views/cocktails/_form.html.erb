@@ -11,10 +11,40 @@
     <% end %>
 
     <%= f.input :name %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file, label: false, :input_html => {:onchange => "displayPreview(this)"} %>
+    <div class="photo-preview" style="width: 100px; height: 100px; overflow: hidden;">
+
+      <img class="hidden" id="photo-preview" src="#" alt="your image" />
+    </div>
 
 
     <%= f.submit class: 'btn btn-primary'%>
   <% end %>
+  <div >
+  </div>
 </div>
 
+<script>
+  const previewImageOnFileSelect = () => {
+  // we select the photo input
+  const input = document.getElementById('photo-input');
+  if (input) {
+    // we add a listener to know when a new picture is uploaded
+    input.addEventListener('change', () => {
+      // we call the displayPreview function (who retrieve the image url and display it)
+      displayPreview(input);
+    })
+  }
+}
+
+const displayPreview = (input) => {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      document.getElementById('photo-preview').src = event.currentTarget.result;
+    }
+    reader.readAsDataURL(input.files[0])
+    document.getElementById('photo-preview').classList.remove('hidden');
+  }
+}
+</script>
