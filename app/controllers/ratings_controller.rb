@@ -16,6 +16,7 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
+    # binding.pry
     params.require(:rating).permit(:rating)
   end
 
