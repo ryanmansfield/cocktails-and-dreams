@@ -1,5 +1,6 @@
 import "bootstrap";
 import { initAOS } from '../plugins/init_aos';
+// import { initStarRating } from '../plugins/init_jquery_bar_rating'
 // import 'rateyo';
 // import { initRateYo } from '../plugins/init_rateyo';
 
